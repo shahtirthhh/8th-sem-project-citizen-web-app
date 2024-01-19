@@ -93,9 +93,10 @@ function Login() {
         .post(process.env.REACT_APP_API, queryData)
         .then((response) => {
           if (response.data.data.loginCitizen) {
+            console.log(response.data.data.loginCitizen.token);
             setToken_context(response.data.data.loginCitizen.token);
             setNotification_context({ color: "green", data: "Logged in !" });
-            navigate("/dashboard");
+            navigate("/dashboard/meetings");
           }
         })
         .catch(({ response }) => {

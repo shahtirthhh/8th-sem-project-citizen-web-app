@@ -51,31 +51,29 @@ function NoticeBoard() {
     fetchNotices();
   }, []);
   return (
-    <div className="p-1 h-[80.5vh] flex">
+    <div className="p-1 h-[86vh] flex">
       {/* Notice Board */}
-      <div className=" p-1 h-full w-full flex justify-center items-center">
-        {!notices && <h2 className=" font-bold text-center">Loading...</h2>}
-        {notices && notices.length < 1 && (
-          <h2 className=" font-bold text-center">Empty Notice board !</h2>
-        )}
-        {notices && notices.length >= 1 && (
-          <div className="flex w-full h-full flex-wrap overflow-y-auto ">
-            {notices.map((notice) => (
-              <div
-                key={notice._id}
-                className="border border-neutral-800 m-3 p-2 flex flex-col w-64 h-72 rounded-lg overflow-auto shadow-[0px_0px_12px_0px_#718096]"
-              >
-                <span className="text-[1rem] font-normal text-neutral-500 border-b border-slate-200 pb-[0.10rem]">
-                  {notice.announcement_date}
-                </span>
-                <span className="whitespace-pre-line text-lg font-medium">
-                  {notice.content}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {!notices && <h2 className=" font-bold text-center">Loading...</h2>}
+      {notices && notices.length < 1 && (
+        <h2 className=" font-bold text-center">Empty Notice board !</h2>
+      )}
+      {notices && notices.length >= 1 && (
+        <div className="flex w-full h-full flex-wrap overflow-y-auto ">
+          {notices.map((notice) => (
+            <div
+              key={notice._id}
+              className="border border-neutral-800 mx-2 my-1 p-2 flex flex-col w-full h-auto rounded-lg overflow-y-auto overflow-x-hidden shadow-[0px_0px_12px_0px_#718096] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300"
+            >
+              <span className="text-[1rem] font-normal text-neutral-500 border-b border-slate-200 pb-[0.10rem]">
+                {notice.announcement_date}
+              </span>
+              <span className="whitespace-pre-line text-lg font-medium">
+                {notice.content}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

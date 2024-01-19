@@ -174,7 +174,7 @@ function Register() {
       });
   };
   return (
-    <div className=" mt-5 p-1 flex flex-col gap-2">
+    <div className=" mt-5 p-1 flex flex-col gap-2 h-[78vh]">
       {/* Register Benefits */}
       <ul className="border-4 p-2 rounded-lg border-slate-400">
         <span className="text-lg font-medium tracking-wide">
@@ -311,6 +311,28 @@ function Register() {
           </>
         )}
       </div>
+      {/* Portal usecases */}
+      <ul className="border-4 p-2 rounded-lg border-slate-400 flex flex-col gap-3">
+        <span className="text-lg font-medium tracking-wide">
+          👉🏻 Overview of "REPORTING AND RESOLUTION PORTAL"
+        </span>
+        <li className="pl-3 text-base tracking-wide">
+          📝 Notice Board :- Online notice/public notification accounced by
+          collector.
+        </li>
+        <li className="pl-3 text-base tracking-wide">
+          🥇 Success Stories :- E-magazine where achivements of citizen of
+          rajkot are published.
+        </li>
+        <li className="pl-3 text-base tracking-wide">
+          🕵🏻‍♂️ Place Report :- Report suspicious/illegeal activities without
+          reveal who you are.
+        </li>
+        <li className="pl-3 text-base tracking-wide">
+          📨 Complaints :- Send complaints of any concern department w/o images
+          directely to the collector.
+        </li>
+      </ul>
     </div>
   );
 }

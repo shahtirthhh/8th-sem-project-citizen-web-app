@@ -49,43 +49,41 @@ function SuccessStories() {
     fetchStories();
   }, [fetchStories]);
   return (
-    <div className="p-1 h-[80.5vh] flex">
+    <div className="p-1 h-[86vh] flex overflow-y-auto">
       {/* Stories*/}
-      <div className=" p-1 h-full w-full flex justify-center items-center">
-        {!stories && <h2 className=" font-bold text-center">Loading...</h2>}
-        {stories && stories.length < 1 && (
-          <h2 className=" font-bold text-center">Empty !</h2>
-        )}
-        {stories && stories.length >= 1 && (
-          <div className="flex w-full h-full flex-wrap overflow-y-auto">
-            {stories.map((story) => (
-              <div
-                key={story._id}
-                className="border border-neutral-800 m-3 p-2 flex flex-col w-64 h-72 rounded-2xl overflow-y-auto shadow-[0px_0px_12px_0px_#718096]"
-              >
-                <span className="text-[1rem] font-normal text-neutral-500 border-b border-slate-200 pb-[0.10rem]">
-                  {story.publish_date}
-                </span>
-                {story.image.length >= 1 && (
-                  <div className="w-full flex flex-row flex-wrap scrollbar-thin  scrollbar-thumb-slate-700 scrollbar-track-slate-300 h-32 overflow-y-scroll ">
-                    {story.image.map((img) => (
-                      <img
-                        key={img}
-                        className="w-full rounded-md my-1"
-                        src={img}
-                        alt="img"
-                      />
-                    ))}
-                  </div>
-                )}
-                <div className="whitespace-pre-line text-lg font-medium">
-                  {story.content}
+      {!stories && <h2 className=" font-bold text-center">Loading...</h2>}
+      {stories && stories.length < 1 && (
+        <h2 className=" font-bold text-center">Empty !</h2>
+      )}
+      {stories && stories.length >= 1 && (
+        <div className="flex w-full h-full flex-wrap overflow-y-auto">
+          {stories.map((story) => (
+            <div
+              key={story._id}
+              className="border border-neutral-800 mx-2 my-1 p-2  h-auto flex flex-col rounded-2xl overflow-x-hidden overflow-y-auto shadow-[0px_0px_12px_0px_#718096]"
+            >
+              <span className="text-[1rem] font-normal text-neutral-500 border-b border-slate-200 pb-[0.10rem]">
+                {story.publish_date}
+              </span>
+              {story.image.length >= 1 && (
+                <div className="w-full flex flex-row flex-wrap gap-2 m-1">
+                  {story.image.map((img) => (
+                    <img
+                      key={img}
+                      className="w-[40%] rounded-md"
+                      src={img}
+                      alt="img"
+                    />
+                  ))}
                 </div>
+              )}
+              <div className="whitespace-pre-line text-lg m-6">
+                {story.content}
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

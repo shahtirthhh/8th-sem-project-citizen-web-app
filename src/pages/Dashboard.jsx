@@ -18,7 +18,10 @@ function Dashboard() {
       {/* <NavBar /> */}
       <div className="border border-blue-500 flex">
         <NoticeContainer />
-        <Outlet />
+        <div className="border border-blue-500 flex flex-col px-3 justify-centre">
+          <NavBar />
+          <Outlet />
+        </div>
         <SuccessContainer />
       </div>
     </div>

@@ -15,7 +15,7 @@ export const Context = React.createContext({
 // eslint-disable-next-line
 export default (props) => {
   const [tokenValue, setTokenValue] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRoYWJ1MjIxMkBnbWFpbC5jb20iLCJfaWQiOiI2NWExNDEwZjliNDRmZTE0ZDc1OGQ4NTMiLCJpYXQiOjE3MDU1MDUzODMsImV4cCI6MTcwNTUwODk4M30.D6T7KmEtIusEn_LWzZLgw3_2chscALlJkBOCS4xuN5o"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpcnRoc2hhaDAyMTJAZ21haWwuY29tIiwiX2lkIjoiNjVhOTU5MGQ2YjNiZGFiOWRjNDJiYTkwIiwiaWF0IjoxNzA1NjcyODI0LCJleHAiOjE3MDU3NTkyMjR9.pAmw22vP02cruNH7KEv_Z4gZpOLr3AEkPpmMpbos5sk"
   );
   const [socketObjectValue, setSocketObjectValue] = useState(null);
   const [socketValue, setSocketValue] = useState(null);

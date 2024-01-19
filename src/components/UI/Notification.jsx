@@ -22,21 +22,21 @@ export default function Notification() {
   switch (notification_context.color) {
     case "red":
       return (
-        <div className="w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-red-500">
+        <div className="z-20 w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-red-500">
           <span className="ml-4">Error !</span>
           <span className="mr-4">{notification_context.data}</span>
         </div>
       );
     case "blue":
       return (
-        <div className="w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-blue-500">
+        <div className="z-20 w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-blue-500">
           <span className="ml-4">Loading...</span>
           <span className="mr-4">{notification_context.data}</span>
         </div>
       );
     case "green":
       return (
-        <div className="w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-green-500">
+        <div className="z-20 w-screen h-8 pl-4 pt-1 absolute bottom-[1vw] flex justify-between  bg-green-500">
           <span className="ml-4">Success !</span>
           <span className="mr-4">{notification_context.data}</span>
         </div>

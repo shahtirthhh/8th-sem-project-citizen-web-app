@@ -81,7 +81,7 @@ function SuccessContainer() {
         </div>
       )}
       {stories && stories.length >= 1 && (
-        <div className="border border-black flex w-full h-full flex-wrap overflow-y-auto">
+        <div className="border border-black flex w-full h-full flex-wrap overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300">
           {stories.map((story) => (
             <div
               key={story._id}

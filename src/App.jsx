@@ -5,17 +5,14 @@ import Waiting from "./pages/Waiting";
 import io from "socket.io-client";
 
 import HomePage from "./pages/Homepage";
-import Register from "./components/homepage/Register";
-import Login from "./components/homepage/Login";
+import PreviousMeetings from "./components/dashboard/meetings/PreviousMeetings";
 import Dashboard from "./pages/Dashboard";
-import HomeContainer from "./components/dashboard/HomeContainer";
 import MeetingsContainer from "./components/dashboard/MeetingsContainer";
 import ComplaintsContainer from "./components/dashboard/ComplaintsContainer";
-import NoticeContainer from "./components/dashboard/NoticeContainer";
 import ReportsContainer from "./components/dashboard/ReportsContainer";
-import SuccessContainer from "./components/dashboard/SuccessContainer";
 import Notification from "./components/UI/Notification";
 import AlertModal from "./components/UI/AlertModal";
+import RequestMeeting from "./components/dashboard/meetings/RequestMeeting";
 const ROUTER = createBrowserRouter([
   // Homepage paths
   {
@@ -27,12 +24,17 @@ const ROUTER = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { index: true, element: <HomeContainer /> },
-      { path: "meetings", element: <MeetingsContainer /> },
+      {
+        path: "meetings",
+        element: <MeetingsContainer />,
+      },
+      {
+        path: "request-meeting",
+        element: <RequestMeeting />,
+      },
+      { path: "previous-meetings", element: <PreviousMeetings /> },
       { path: "complaints", element: <ComplaintsContainer /> },
-      { path: "notice-board", element: <NoticeContainer /> },
       { path: "reports-activities", element: <ReportsContainer /> },
-      { path: "success-stories", element: <SuccessContainer /> },
     ],
   },
 ]);
