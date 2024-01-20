@@ -56,7 +56,7 @@ function Login() {
     if (loginForm.emailVal && loginForm.passwordVal) {
       setNotification_context({
         color: "blue",
-        data: "Logging you in...",
+        data: "⏳ Logging you in...",
         loading: true,
       });
       // _id
@@ -102,7 +102,7 @@ function Login() {
         .catch(({ response }) => {
           setNotification_context({
             color: "red",
-            data: response.data.errors[0].message,
+            data: "⚠" + response.data.errors[0].message,
           });
         });
     }

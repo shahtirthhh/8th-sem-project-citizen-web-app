@@ -7,7 +7,7 @@ export const Context = React.createContext({
   setSocket: (socket) => {},
   socketObject: null,
   setSocketObject: (socket) => {},
-  notification: { color: "null", data: "null" },
+  notification: { color: null, data: null },
   setNotification: ({ color, data, loading = false }) => {},
   alertModal: { msg: "", visible: "" },
   setAlertModal: ({ msg, visible }) => {},
@@ -15,7 +15,7 @@ export const Context = React.createContext({
 // eslint-disable-next-line
 export default (props) => {
   const [tokenValue, setTokenValue] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpcnRoc2hhaDAyMTJAZ21haWwuY29tIiwiX2lkIjoiNjVhOTU5MGQ2YjNiZGFiOWRjNDJiYTkwIiwiaWF0IjoxNzA1NjcyODI0LCJleHAiOjE3MDU3NTkyMjR9.pAmw22vP02cruNH7KEv_Z4gZpOLr3AEkPpmMpbos5sk"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpcnRoc2hhaDAyMTJAZ21haWwuY29tIiwiX2lkIjoiNjVhOTU5MGQ2YjNiZGFiOWRjNDJiYTkwIiwiaWF0IjoxNzA1NzY4NDcyLCJleHAiOjE3MDU4NTQ4NzJ9.MsqJ_L1ecCK77x8grcSqc2Qd-Ubm4YQwA-Uf1286Lm0"
   );
   const [socketObjectValue, setSocketObjectValue] = useState(null);
   const [socketValue, setSocketValue] = useState(null);

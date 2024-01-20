@@ -13,11 +13,11 @@ function MeetingsContainer() {
   const setNotification_context = useContext(Context).setNotification;
   const setAlertModal_context = useContext(Context).setAlertModal;
   const [meeting, setMeeting] = useState("fetching");
-  const [previousMeetings, setPreviousMeetings] = useState(null);
+  const [noMeeting, setNoMeeting] = useState(null);
   const fetchData = async () => {
     setNotification_context({
       color: "blue",
-      data: "Getting data...",
+      data: "🧘🏻 Getting data...",
       loading: true,
     });
     const { data } = await axios({
@@ -46,14 +46,17 @@ function MeetingsContainer() {
       console.log(data.errors);
       setNotification_context({
         color: "red",
-        data: "Something went wrong !",
+        data: "⚠ Something went wrong !",
       });
     } else {
-      setMeeting(data.data.myMeeting.meeting);
-
+      if (data.data.myMeeting.meeting) {
+        setMeeting(data.data.myMeeting.meeting);
+      } else {
+        setNoMeeting("no meeting");
+      }
       setNotification_context({
         color: "green",
-        data: "Updated Just Now !",
+        data: "🎉 Updated Just Now !",
       });
     }
   };
@@ -63,7 +66,7 @@ function MeetingsContainer() {
 
   return (
     <div className="relative top-[-5.0rem] border-2 border-black rounded-[2.5rem] p-3  flex flex-col gap-2 w-[58rem]  h-[34rem] z-10 bg-white scrollbar-track-slate-300">
-      <div className="flex flex-col px-2 rounded-[2.5rem] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 gap-3">
+      <div className="flex flex-col px-2  overflow-y-auto scrollbar scrollbar-thumb-slate-600 scrollbar-w-2 scrollbar-thumb-rounded-lg scrollbar-track-rounded-lg gap-3">
         {/* Meeting */}
         <div
           className={`border-2 border-black flex rounded-[2.5rem] p-2 justify-center ${
@@ -76,8 +79,14 @@ function MeetingsContainer() {
               : ""
           }`}
         >
-          {meeting === "fetching" && (
+          {meeting === "fetching" && !noMeeting && (
             <h1 className="text-base font-semibold text-center">Loading...</h1>
+          )}
+          {noMeeting && (
+            <h1 className="text-base font-semibold text-center">
+              😴 No meeting requested, Please select from below available slots
+              to request one !
+            </h1>
           )}
           {typeof meeting === "object" ? (
             <div className=" w-full flex flex-col gap-4 h-full rounded-[2.5rem]">
@@ -104,7 +113,7 @@ function MeetingsContainer() {
                 </span>
               </div>
               {/*Meeting overview*/}
-              <div className="flex justify-evenly m-2 h-40 overflow-y-auto rounded-[2.5rem] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-300">
+              <div className="flex justify-evenly m-2 h-40 overflow-y-auto rounded-[2.5rem] scrollbar scrollbar-thumb-white scrollbar-w-2 scrollbar-thumb-rounded-lg scrollbar-track-transparent ">
                 <span className="text-lg font-semibold text-left whitespace-pre-line p-2 ">
                   {meeting.overview}
                 </span>

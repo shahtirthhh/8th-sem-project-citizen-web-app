@@ -15,10 +15,12 @@ function FreeSlots() {
   const setNotification_context = useContext(Context).setNotification;
 
   const [freeSlots, setFreeSlots] = useState(null);
+  const [alreadyExist, setAlreadyExist] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [answer, setAnswer] = useState(null);
   const [msg, setMsg] = useState("");
   const [selected, setSelected] = useState(null);
+
   useEffect(() => {
     if (answer) {
       setShowModal(false);
@@ -37,7 +39,7 @@ function FreeSlots() {
   const fetchFreeSlots = async () => {
     setNotification_context({
       color: "blue",
-      data: "Getting data...",
+      data: "🧘🏻 Getting data...",
       loading: true,
     });
     const { data } = await axios({
@@ -59,26 +61,19 @@ function FreeSlots() {
       },
     });
     if (data.errors) {
-      console.log(data.errors);
-      setNotification_context({
-        color: "red",
-        data: "Something went wrong !",
-      });
+      if (data.errors[0].message === "One meeting already requested !") {
+        setAlreadyExist("cannot procced.");
+      } else {
+        setNotification_context({
+          color: "red",
+          data: "⚠ Something went wrong !",
+        });
+      }
     } else {
-      //   var free = [];
-      //   data.data.getFreeSlots.map((slot, index) => {
-      //     if (
-      //       index !== 0 &&
-      //       data.data.getFreeSlots[index - 1].date === slot.date
-      //     ) {
-      //       free[-1].slots.push(slot);
-      //     }
-      //     free.push({ date: slot.date, slots: [slot.slot] });
-      //   });
       setFreeSlots(data.data.getFreeSlots);
       setNotification_context({
         color: "green",
-        data: "Updated Just Now !",
+        data: "🎉 Updated Just Now !",
       });
     }
   };
@@ -87,7 +82,7 @@ function FreeSlots() {
   }, []);
   return (
     <div className="border-2 border-black flex flex-wrap gap-5 rounded-[2.5rem] p-2 justify-center bg-purple-300">
-      {!freeSlots && (
+      {!freeSlots && !alreadyExist && (
         <span className="text-center font-semibold">Loading...</span>
       )}
       {freeSlots && freeSlots.length < 1 && (
@@ -96,7 +91,7 @@ function FreeSlots() {
         </span>
       )}
       {freeSlots && freeSlots.length >= 1 && (
-        <div className="flex flex-wrap gap-5 rounded-[2.5rem] p-2 justify-start bg-purple-300">
+        <div className="flex flex-wrap gap-5 rounded-[2.5rem] p-2 justify-center bg-purple-300">
           {freeSlots.map((slot) => {
             return (
               <div
@@ -120,6 +115,11 @@ function FreeSlots() {
             );
           })}
         </div>
+      )}
+      {alreadyExist && (
+        <span className="text-base font-bold text-center">
+          ⛔ only one request can be made at a time, Cannot get free slots ! 😶
+        </span>
       )}
       <Modal msg={msg} showModal={showModal} onAnswer={setAnswer} />
     </div>

@@ -17,7 +17,7 @@ function NoticeBoard() {
     return async () => {
       setNotification_context({
         color: "blue",
-        data: "Checking for data...",
+        data: "🧘🏻 Checking for data...",
         loading: true,
       });
       const { data } = await axios({
@@ -36,12 +36,12 @@ function NoticeBoard() {
       if (data.errors) {
         setNotification_context({
           color: "red",
-          data: "Something went wrong !",
+          data: "⚠ Something went wrong !",
         });
       } else {
         setNotification_context({
           color: "green",
-          data: "Updated Just Now !",
+          data: "🎉 Updated Just Now !",
         });
         setNotices(data.data.notices);
       }

@@ -17,7 +17,7 @@ function PreviousMeetings() {
   const fetchData = async () => {
     setNotification_context({
       color: "blue",
-      data: "Getting data...",
+      data: "⏳ Getting data...",
       loading: true,
     });
     const { data } = await axios({
@@ -49,13 +49,14 @@ function PreviousMeetings() {
       console.log(data.errors);
       setNotification_context({
         color: "red",
-        data: "Something went wrong !",
+        data: "⚠ Something went wrong !",
       });
     } else {
+      console.log(data.data.myMeeting.meetings);
       setPreviousMeetings(data.data.myMeeting.meetings);
       setNotification_context({
         color: "green",
-        data: "Updated Just Now !",
+        data: "🎉 Updated Just Now !",
       });
     }
   };
@@ -120,7 +121,7 @@ function PreviousMeetings() {
                           ? "❌ was canceled"
                           : ""}
                       </span>
-                      <span className="text-sm font-semibold text-left w-[17rem]">
+                      <span className="text-sm font-semibold text-left w-[22rem]">
                         {meeting.cancel
                           ? "📝   " + meeting.reason_to_cancel
                           : "📅   " +

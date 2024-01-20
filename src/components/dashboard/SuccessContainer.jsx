@@ -17,7 +17,7 @@ function SuccessContainer() {
   const fetchStories = useCallback(async () => {
     setNotification_context({
       color: "blue",
-      data: "Getting data...",
+      data: "⏳ Getting data...",
       loading: true,
     });
     const { data } = await axios({
@@ -40,12 +40,12 @@ function SuccessContainer() {
     if (data.errors) {
       setNotification_context({
         color: "red",
-        data: "Something went wrong !",
+        data: "⚠ Something went wrong !",
       });
     } else {
       setNotification_context({
         color: "green",
-        data: "Updated Just Now !",
+        data: "🎉 Updated Just Now !",
       });
       setStories(data.data.stories);
     }

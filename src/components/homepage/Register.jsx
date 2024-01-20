@@ -82,7 +82,7 @@ function Register() {
   const verify_email = async () => {
     setNotification_context({
       color: "blue",
-      data: "Verifing Email...",
+      data: "📨 Verifing Email...",
       loading: true,
     });
     axios({
@@ -97,21 +97,21 @@ function Register() {
       .then(({ data }) => {
         setNotification_context({
           color: "green",
-          data: "OTP sent !",
+          data: "🔢 OTP sent !",
         });
         set_encrypted_otp(data.data.sendOtp);
       })
       .catch(({ response }) => {
         setNotification_context({
           color: "red",
-          data: response.data.errors[0].message,
+          data: "⚠ " + response.data.errors[0].message,
         });
       });
   };
   const check_otp = async () => {
     setNotification_context({
       color: "blue",
-      data: "Validating...",
+      data: "⏳ Validating...",
       loading: true,
     });
     const { data } = await axios({
@@ -126,20 +126,20 @@ function Register() {
     if (data.errors) {
       setNotification_context({
         color: "red",
-        data: "Something went wrong !",
+        data: "⚠ Something went wrong !",
       });
     } else {
       if (data.data.verifyOtp) {
         setNotification_context({
           color: "green",
-          data: "Verified !",
+          data: "🎉 Verified !",
         });
         loginFormDispatch({ type: "setVerified" });
         set_encrypted_otp(null);
       } else {
         setNotification_context({
           color: "red",
-          data: "Incorrect OTP !",
+          data: "☠ Incorrect OTP !",
         });
       }
     }
@@ -147,7 +147,7 @@ function Register() {
   const register = async () => {
     setNotification_context({
       color: "blue",
-      data: "Registering...",
+      data: "💾 Registering...",
       loading: true,
     });
     axios({
@@ -162,14 +162,14 @@ function Register() {
       .then(({ data }) => {
         setNotification_context({
           color: "green",
-          data: "Registered, Login to continue !",
+          data: "🎊 Registered, Login to continue !",
         });
         setRegistered(data.data.register);
       })
       .catch(({ response }) => {
         setNotification_context({
           color: "red",
-          data: response.data.errors[0].message,
+          data: "⚠ " + response.data.errors[0].message,
         });
       });
   };
