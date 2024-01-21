@@ -9,7 +9,7 @@ const query_generator = (query) => {
     query,
   };
 };
-function FreeSlots() {
+function FreeSlots({ render }) {
   const token = useContext(Context).token;
   const navigate = useNavigate();
   const setNotification_context = useContext(Context).setNotification;

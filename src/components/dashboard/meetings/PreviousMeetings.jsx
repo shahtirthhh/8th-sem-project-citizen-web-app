@@ -37,6 +37,7 @@ function PreviousMeetings() {
             reason_to_cancel
             happen
             reason_to_not_happen
+            missed
           }
         }
       }
@@ -92,14 +93,14 @@ function PreviousMeetings() {
               >
                 <div
                   className={`border-2 border-black flex rounded-[2.5rem] p-2 justify-center ${
-                    meeting
+                    meeting.confirm
                       ? meeting.happen
                         ? "bg-emerald-300"
-                        : meeting.cancel
-                        ? "bg-red-300"
-                        : meeting.confirm
-                        ? "bg-yellow-300"
-                        : ""
+                        : "bg-yellow-300"
+                      : meeting.cancel
+                      ? "bg-red-300"
+                      : meeting.missed
+                      ? "bg-gray-300"
                       : ""
                   }`}
                 >
@@ -119,6 +120,8 @@ function PreviousMeetings() {
                             }`
                           : meeting.cancel
                           ? "❌ was canceled"
+                          : meeting.missed
+                          ? "😿 Missed by the collector"
                           : ""}
                       </span>
                       <span className="text-sm font-semibold text-left w-[22rem]">

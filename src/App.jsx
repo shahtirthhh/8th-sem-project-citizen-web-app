@@ -13,6 +13,7 @@ import ReportsContainer from "./components/dashboard/ReportsContainer";
 import Notification from "./components/UI/Notification";
 import AlertModal from "./components/UI/AlertModal";
 import RequestMeeting from "./components/dashboard/meetings/RequestMeeting";
+import VirutalMeeting from "./components/dashboard/meetings/VirutalMeeting";
 const ROUTER = createBrowserRouter([
   // Homepage paths
   {
@@ -28,6 +29,7 @@ const ROUTER = createBrowserRouter([
         path: "meetings",
         element: <MeetingsContainer />,
       },
+
       {
         path: "request-meeting",
         element: <RequestMeeting />,
@@ -36,6 +38,10 @@ const ROUTER = createBrowserRouter([
       { path: "complaints", element: <ComplaintsContainer /> },
       { path: "reports-activities", element: <ReportsContainer /> },
     ],
+  },
+  {
+    path: "virtual-meeting",
+    element: <VirutalMeeting />,
   },
 ]);
 // socketObject -> Object of the socket

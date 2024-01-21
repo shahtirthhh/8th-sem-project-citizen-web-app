@@ -11,11 +11,13 @@ export const Context = React.createContext({
   setNotification: ({ color, data, loading = false }) => {},
   alertModal: { msg: "", visible: "" },
   setAlertModal: ({ msg, visible }) => {},
+  peerSignalData: { signal: null, from: null },
+  setPeerSignalData: ({ signal, from }) => {},
 });
 // eslint-disable-next-line
 export default (props) => {
   const [tokenValue, setTokenValue] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpcnRoc2hhaDAyMTJAZ21haWwuY29tIiwiX2lkIjoiNjVhOTU5MGQ2YjNiZGFiOWRjNDJiYTkwIiwiaWF0IjoxNzA1NzY4NDcyLCJleHAiOjE3MDU4NTQ4NzJ9.MsqJ_L1ecCK77x8grcSqc2Qd-Ubm4YQwA-Uf1286Lm0"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpcnRoc2hhaDAyMTJAZ21haWwuY29tIiwiX2lkIjoiNjVhOTU5MGQ2YjNiZGFiOWRjNDJiYTkwIiwiaWF0IjoxNzA1ODU1MDAwLCJleHAiOjE3MDU5NDE0MDB9.aBCiQZ--WLkSyjQqTywrg3nQlnGJBmUyCWDtFmA-hO0"
   );
   const [socketObjectValue, setSocketObjectValue] = useState(null);
   const [socketValue, setSocketValue] = useState(null);
@@ -28,6 +30,10 @@ export default (props) => {
     msg: "",
     visible: false,
   });
+  const [peerSignalDataValue, setPeerSignalDataValue] = useState({
+    signal: null,
+    from: null,
+  });
   return (
     <Context.Provider
       value={{
@@ -36,6 +42,8 @@ export default (props) => {
         socketObject: socketObjectValue,
         notification: notificationValue,
         alertModal: alertModalValue,
+        peerSignalData: peerSignalDataValue,
+        setPeerSignalData: setPeerSignalDataValue,
         setToken: setTokenValue,
         setSocket: setSocketValue,
         setNotification: setNotificationValue,

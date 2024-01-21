@@ -7,20 +7,17 @@ function AlertModal() {
     <>
       {alertModalContext.visible && (
         <dialog className="z-20 w-full h-full absolute top-0 left-0 bg-black/25 backdrop-blur-md flex justify-center items-center">
-          <div className="border rounded-xl bg-white/70 w-2/5 flex flex-col gap-3 justify-center">
-            <span className="text-lg text-center font-bold">
+          <div className="border max-h-[30rem] min-h-[10rem] rounded-xl bg-white/70 max-w-[60rem] min-w-[25rem] flex flex-col gap-3 justify-between items-center p-3 overflow-y-auto scrollbar scrollbar-thumb-white scrollbar-w-2 scrollbar-thumb-rounded-lg scrollbar-track-transparent ">
+            <span className="text-lg  text-center font-bold whitespace-pre-line ">
               {alertModalContext.msg}
             </span>
-            <div className="flex flex-row mt-20 justify-center">
-              <button
-                onClick={() =>
-                  setAlertModalContext({ msg: "", visible: false })
-                }
-                className="text-2xl border text-white bg-blue-400 border-black py-1 px-2 w-24 rounded-lg m-2 font-semibold"
-              >
-                OKAY
-              </button>
-            </div>
+
+            <button
+              onClick={() => setAlertModalContext({ msg: "", visible: false })}
+              className="hover:scale-105 hover:bg-blue-600 transition-all text-2xl border text-white bg-blue-400 border-black w-[9rem] rounded-lg h-[2.5rem] font-semibold"
+            >
+              OKAY
+            </button>
           </div>
         </dialog>
       )}
