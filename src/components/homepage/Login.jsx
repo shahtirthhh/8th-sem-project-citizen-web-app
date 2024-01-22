@@ -96,7 +96,7 @@ function Login() {
             console.log(response.data.data.loginCitizen.token);
             setToken_context(response.data.data.loginCitizen.token);
             setNotification_context({ color: "green", data: "Logged in !" });
-            navigate("/dashboard/meetings");
+            navigate("dashboard");
           }
         })
         .catch(({ response }) => {

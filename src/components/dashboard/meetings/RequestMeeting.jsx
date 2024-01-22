@@ -38,7 +38,7 @@ function RequestMeeting() {
         msg: `👎🏻 Bad request`,
         visible: true,
       });
-      navigate("/dashboard/meetings");
+      navigate("meetings");
     } else {
       setSlot({ date, time, name });
     }
@@ -74,7 +74,7 @@ function RequestMeeting() {
         data: "📤 Request sent !",
       });
       setTimeout(() => {
-        navigate("/dashboard/meetings");
+        navigate("");
       }, 700);
     }
   };

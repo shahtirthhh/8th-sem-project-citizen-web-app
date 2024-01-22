@@ -14,6 +14,8 @@ import Notification from "./components/UI/Notification";
 import AlertModal from "./components/UI/AlertModal";
 import RequestMeeting from "./components/dashboard/meetings/RequestMeeting";
 import VirutalMeeting from "./components/dashboard/meetings/VirutalMeeting";
+import ComplaintsHistory from "./components/dashboard/ComplaintsHistory";
+import ReportsHistory from "./components/dashboard/ReportsHistory";
 const ROUTER = createBrowserRouter([
   // Homepage paths
   {
@@ -26,7 +28,7 @@ const ROUTER = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "meetings",
+        index: true,
         element: <MeetingsContainer />,
       },
 
@@ -36,7 +38,9 @@ const ROUTER = createBrowserRouter([
       },
       { path: "previous-meetings", element: <PreviousMeetings /> },
       { path: "complaints", element: <ComplaintsContainer /> },
+      { path: "complaints-history", element: <ComplaintsHistory /> },
       { path: "reports-activities", element: <ReportsContainer /> },
+      { path: "reports-history", element: <ReportsHistory /> },
     ],
   },
   {

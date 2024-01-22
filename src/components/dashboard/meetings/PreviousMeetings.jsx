@@ -50,7 +50,7 @@ function PreviousMeetings() {
       console.log(data.errors);
       setNotification_context({
         color: "red",
-        data: "⚠ Something went wrong !",
+        data: "💀 Something went wrong !",
       });
     } else {
       console.log(data.data.myMeeting.meetings);
@@ -95,12 +95,12 @@ function PreviousMeetings() {
                   className={`border-2 border-black flex rounded-[2.5rem] p-2 justify-center ${
                     meeting.confirm
                       ? meeting.happen
-                        ? "bg-emerald-300"
-                        : "bg-yellow-300"
+                        ? "bg-emerald-200"
+                        : "bg-yellow-200"
                       : meeting.cancel
-                      ? "bg-red-300"
+                      ? "bg-red-200"
                       : meeting.missed
-                      ? "bg-gray-300"
+                      ? "bg-gray-200"
                       : ""
                   }`}
                 >
@@ -113,11 +113,9 @@ function PreviousMeetings() {
                       </span>
                       <span className="text-sm font-semibold text-left w-[17rem] whitespace-pre-line">
                         {meeting.confirm
-                          ? `✔ was confirmed ${
-                              meeting.happen
-                                ? ""
-                                : `\n🙅🏻‍♂️ but you didn't joined `
-                            }`
+                          ? meeting.happen
+                            ? "💁🏻‍♂️ Attended"
+                            : `✔ was confirmed \n🙅🏻‍♂️ but you didn't joined `
                           : meeting.cancel
                           ? "❌ was canceled"
                           : meeting.missed

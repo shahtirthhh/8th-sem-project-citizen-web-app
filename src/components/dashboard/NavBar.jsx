@@ -31,24 +31,22 @@ function NavBar() {
   return (
     <>
       <ul
-        className={`hover:top-[0rem] top-[2.8rem] items-center transition-all  border-2 border-black rounded-t-[2.5rem] bg-zinc-400 flex flex-col h-40 relative z-0 `}
+        className={`hover:top-[0rem] top-[2.8rem] items-center transition-all  border-2 border-black rounded-t-[2.5rem] bg-teal-100 flex flex-col h-40 relative z-0 `}
       >
-        <div className="flex ">
+        <div className="flex gap-3">
           <li
-            className={`transition-all flex flex-col text-lg font-medium p-2 px-4 h-fit  ${
-              active === "/dashboard/meetings"
-                ? "bg-slate-200 rounded-b-lg"
-                : ""
+            className={` transition-all hover:bg-teal-300 rounded-b-lg flex flex-col text-lg font-medium p-2 px-4 h-fit  ${
+              active === "/dashboard" ? "bg-teal-500 rounded-b-lg" : ""
             } `}
           >
-            <Link to="meetings" className="">
+            <Link to="" className="">
               Meetings
             </Link>
           </li>
           <li
-            className={`text-lg font-medium p-2 px-4 h-fit ${
+            className={`text-lg transition-all hover:bg-teal-300 rounded-b-lg font-medium p-2 px-4 h-fit ${
               active === "/dashboard/complaints"
-                ? "bg-slate-200 rounded-b-lg"
+                ? "bg-teal-400 rounded-b-lg"
                 : ""
             } `}
           >
@@ -58,9 +56,9 @@ function NavBar() {
           </li>
 
           <li
-            className={`text-lg font-medium p-2 px-4 h-fit ${
+            className={`text-lg transition-all hover:bg-teal-300 rounded-b-lg font-medium p-2 px-4 h-fit ${
               active === "/dashboard/reports-activities"
-                ? "bg-slate-200 rounded-b-lg"
+                ? "bg-teal-400 rounded-b-lg"
                 : ""
             } `}
           >
@@ -69,7 +67,9 @@ function NavBar() {
             </Link>
           </li>
 
-          <li className={`text-lg font-medium p-2 px-4 h-fit`}>
+          <li
+            className={`text-lg transition-all hover:bg-teal-300 rounded-b-lg font-medium p-2 px-4 h-fit`}
+          >
             <button
               onClick={() => {
                 setMsg("Sure to logout ?");
@@ -81,11 +81,11 @@ function NavBar() {
             </button>
           </li>
         </div>
-        <div className="flex">
+        <div className="flex gap-3">
           <li
-            className={`transition-all flex flex-col text-lg font-medium p-2 px-4 h-fit  ${
+            className={` transition-all hover:bg-teal-300 flex flex-col text-lg font-medium mt-1 rounded-t-lg pb-2 px-4 h-fit  ${
               active === "/dashboard/previous-meetings"
-                ? "bg-slate-200 rounded-t-lg"
+                ? "bg-teal-400 rounded-t-lg"
                 : ""
             } `}
           >
@@ -94,9 +94,9 @@ function NavBar() {
             </Link>
           </li>
           <li
-            className={`text-lg font-medium p-2 px-4 h-fit ${
+            className={`text-lg transition-all hover:bg-teal-300 font-medium mt-1 rounded-t-lg pb-2 px-4 h-fit ${
               active === "/dashboard/complaints-history"
-                ? "bg-slate-200 rounded-t-lg"
+                ? "bg-teal-400 rounded-t-lg"
                 : ""
             } `}
           >
@@ -106,9 +106,9 @@ function NavBar() {
           </li>
 
           <li
-            className={`text-lg font-medium p-2 px-4 h-fit ${
+            className={`text-lg transition-all hover:bg-teal-300 font-medium mt-1 rounded-t-lg pb-2  px-4 h-fit ${
               active === "/dashboard/reports-history"
-                ? "bg-slate-200 rounded-t-lg"
+                ? "bg-teal-400 rounded-t-lg"
                 : ""
             }`}
           >

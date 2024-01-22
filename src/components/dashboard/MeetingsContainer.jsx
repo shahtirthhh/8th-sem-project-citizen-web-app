@@ -92,6 +92,7 @@ function MeetingsContainer() {
             confirm
             cancel
             reason_to_cancel 
+            happen
           }
         }
       }
@@ -218,14 +219,16 @@ function MeetingsContainer() {
   };
 
   return (
-    <div className="relative top-[-5.0rem] border-2 border-black rounded-[2.5rem] p-3  flex flex-col gap-2 w-[58rem]  h-[34rem] z-10 bg-white scrollbar-track-slate-300">
+    <div className="relative top-[-5.0rem] border-2 border-black rounded-[2.5rem] p-3  flex flex-col gap-2 w-[58rem]  h-[34rem] z-10 bg-teal-50 scrollbar-track-slate-300">
       <div className="flex flex-col px-2  overflow-y-auto scrollbar scrollbar-thumb-slate-600 scrollbar-w-2 scrollbar-thumb-rounded-lg scrollbar-track-rounded-lg gap-3">
         {/* Meeting */}
         <div
           className={`border-2 border-black flex rounded-[2.5rem] p-2 justify-center ${
             meeting
               ? meeting.confirm
-                ? "bg-emerald-300"
+                ? meeting.happen
+                  ? "bg-orange-200"
+                  : "bg-emerald-300"
                 : meeting.cancel
                 ? "bg-red-300"
                 : "bg-blue-300"
@@ -252,12 +255,15 @@ function MeetingsContainer() {
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-semibold text-center">
                     {meeting.confirm
-                      ? "✔ Confirmed"
+                      ? meeting.happen
+                        ? "🙏🏻 Thank You for Attending"
+                        : "✔ Confirmed"
                       : meeting.cancel
                       ? "❌ Canceled"
                       : "⌛ Pending"}
                   </span>
                   {meeting.confirm &&
+                    !meeting.happen &&
                     new Date(meeting.date + " " + meeting.slot.split("-")[0]) <=
                       new Date() &&
                     new Date(meeting.date + " " + meeting.slot.split("-")[1]) >=
